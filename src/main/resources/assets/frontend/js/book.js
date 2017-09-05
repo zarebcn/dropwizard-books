@@ -1,9 +1,17 @@
 
-getIdFromUrlAndGetBookById();
-homeButton();
+//getBookByIdAndDisplayIt(getIdFromUrl());
+
+let booksPromise = loadBook(getIdFromUrl());
+
+booksPromise.then(book => {
+    displayBook(book);
+});
+
+homePageRedirect();
+
 
 /** Goes to Home page when home button is clicked */
-function homeButton() {
+function homePageRedirect() {
 
     var button = document.querySelector("button");
 
@@ -13,13 +21,26 @@ function homeButton() {
     }
 }
 
-/** Extracts the id parameter from the URL and does a callback for getting a book by the extracted id */
-function getIdFromUrlAndGetBookById() {
+function loadBook(bookid) {
+
+    let url = '/api/books/' + bookid;
+
+    // We return the promise that fetch() gives us
+    return fetch(url)
+        .then(response => response.json())
+        .catch(error => {
+            console.log("AJAX request finished with an error :(");
+            console.error(error);
+        });
+}
+
+/** Extracts the id parameter from the URL and returns it*/
+function getIdFromUrl() {
 
     var url = location.href;
-    var igual = url.indexOf("=");
-    var id = url.substring(igual + 1, url.length);
-    getBookByIdAndDisplayIt(id);
+    var equalSignIndex = url.indexOf("=");
+    var id = url.substring(equalSignIndex + 1, url.length);
+    return id;
 }
 
 function getBookByIdAndDisplayIt(bookid) {

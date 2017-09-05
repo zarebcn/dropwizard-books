@@ -6,8 +6,6 @@ booksPromise.then(books => {
 	//getBookWhenClickOnLink();
 });
 
-var a = location.href;
-console.log(a);
 
 // Equivalent to the code above
 // loadBooks().then(displayBooks);
