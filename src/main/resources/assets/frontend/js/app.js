@@ -3,9 +3,11 @@ let booksPromise = loadBooks();
 
 booksPromise.then(books => {
 	displayBooks(books);
-	bookClick();
+	//getBookWhenClickOnLink();
 });
 
+var a = location.href;
+console.log(a);
 
 // Equivalent to the code above
 // loadBooks().then(displayBooks);
@@ -32,7 +34,8 @@ function displayBooks(books) {
 
 	for (const book of books) {
 		//html += "<li><a href='' data-id=" + book.id + ">" + book.title + "</a></li>";
-		html += '<li><a href="" data-id="' + book.id + '">' + book.title + '</a></li>';
+		//html += '<li><a href="" data-id="' + book.id + '">' + book.title + '</a></li>';
+		html += '<li><a href=http://localhost:8080/assets/frontend/book.html?bookid=' + book.id + '>' + book.title + '</a></li>';
 	}
 
 	html += "</ul>";
@@ -64,7 +67,8 @@ function loadBooksAndDisplayThem() {
 		});
 }
 
-function bookClick() {
+/** Does a callback for getting a book by its id property when clicking on the link */
+function getBookWhenClickOnLink() {
 
 	$('a').click(function(event) {
         event.preventDefault();
