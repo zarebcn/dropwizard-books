@@ -1,0 +1,22 @@
+
+{{#partial "content"}}
+
+    <h1>Recommended books</h1>
+
+    <form class="search-box">
+        <input placeholder="search books"> <button>Search</button>
+    </form>
+
+    {{#if books}}
+    <ul>
+        {{#books}}
+            <li><a href='/books/{{id}}'>{{title}}</a></li>
+        {{/books}}
+    </ul>
+    {{else}}
+        <div>No books to show!</div>
+    {{/if}}
+
+{{/partial}}
+
+{{> base}}
