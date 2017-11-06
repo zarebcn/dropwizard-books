@@ -7,6 +7,9 @@ public class Book {
 	private String author;
 	private int numPages;
 
+	public Book() {
+		//dropwizard constructor for POST
+	}
 
 	public Book(int id, String title, String author, int numPages) {
 		this.id = id;
@@ -30,5 +33,10 @@ public class Book {
 
 	public int getNumPages() {
 		return numPages;
+	}
+
+	@Override
+	public String toString() {
+		return title + " by " + author + " (" + numPages + ")";
 	}
 }

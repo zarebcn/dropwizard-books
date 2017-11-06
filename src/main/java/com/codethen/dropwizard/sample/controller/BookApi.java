@@ -17,10 +17,16 @@ public class BookApi {
 		this.bookService = bookService;
 	}
 
+
 	@GET
 	public Collection<Book> viewBooks(@QueryParam("search") String search) {
 
 		return bookService.findByTitle(search);
+	}
+
+	@POST
+	public void addBook(Book book) {
+		System.out.println(book);
 	}
 
 	@GET
