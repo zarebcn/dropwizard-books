@@ -19,6 +19,8 @@ public class MongoDbUtil {
 
         // Get collection called "products"
         MongoCollection<Document> products = db.getCollection("products");
+        
+        client.close();
 
         return products;
     }
